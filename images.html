@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="search.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+        <title>Andrei's Personalized Google Search - Images</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .main-menu {
+                float: right;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .main-logo {
+                clear: both;
+                padding-top: 150px;
+                text-align: center;
+            }
+
+            #txt-google-input {
+                position: relative;
+                border-style: solid;
+                border-radius: 30px;
+                width: 350px;
+                height: 35px;
+                border-color: rgb(213, 228, 225);
+                outline: none;
+                padding-left: 40px;
+            }
+
+            @media (min-width: 500px) {
+                body {
+                }
+            }
+
+            @media (max-width: 499px) {
+                body {
+                }
+            }
+        </style>
+        <script>
+            function handleEnter(inField, e)
+            {
+                var charCode;
+
+                //Get key code (support for all browsers)
+                if(e && e.which)
+                {
+                    charCode = e.which;
+                }
+                else if(window.event)
+                {
+                    e = window.event;
+                    charCode = e.keyCode;
+                }
+            
+                if(charCode == 13)
+                {
+                    if(inField.value=="") {
+                        e.preventDefault();
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="frm-google-copycat" action="https://google.com/images" method="get">
+            <div class="main-menu">
+                <div><a href="index.html">Google Search</a></div>
+                <div><a href="images.html">Google Image Search</a></div>
+                <div><a href="adv_search.html">Google Advanced Search</a></div>
+            </div>
+            <div class="main-logo"><img src="google-images.png" height="100px" /></div>
+            <div class="main-search-text"><i class="fa fa-search fa-xs"></i>
+                <input id="txt-google-input" type="text" name="q" onkeypress="handleEnter(this, event)" />
+            </div>
+        </form>
+    </body>
+</html>

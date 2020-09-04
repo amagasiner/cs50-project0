@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="search.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+        <title>Andrei's Personalized Google Search - Advanced</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+	            padding: 0;
+	            border: 0;
+            }
+
+            .main-menu {
+                padding: 10px;
+                background-color: rgb(247, 241, 241);
+                height: 40px;
+            }
+
+            .main-logo {
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-left: 48px;
+                color: red;
+                font-size: 20px;
+            }
+
+            .main-search-heading {
+                border-top: rgb(240, 232, 232);
+                border-top-style: solid;
+                border-top-width: 1px;
+                padding-top: 45px; 
+                padding-left: 48px;
+                font-size: 16px;
+                color: rgba(0, 0, 0, 0.87);
+            }
+
+            .main-search-container {
+                display: grid;
+                gap: 0px;
+                grid-template-rows: repeat(5, 35px);
+                align-items: center;
+                row-gap: 11px;
+                /* grid-template-columns below in media queries */
+                padding: 13px 48px 24px 48px; 
+                font-size: 13px;
+                color: rgba(0, 0, 0, 0.87);
+                border-bottom: rgb(240, 232, 232);
+                border-bottom-style: solid;
+                border-width: 1px;
+            }
+
+            .grid-i-always {
+                padding-right: 15px
+            }
+
+            .grid-i-button {
+                grid-column: 2/3;
+                justify-self: end;
+                padding: 0px 12px 0px 0px;
+                border:0px;
+            }
+
+            #btnSubmitAdvSearch {
+                background-color: rgb(66, 128, 245); 
+                color: white;
+                font-weight: bold;
+                font-size: 11px;
+                border: none;
+                height: 30px;
+                border-radius: 2px;
+                width:120px;
+            }
+
+            #btnSubmitAdvSearch:hover {
+                background-color: rgb(53, 112, 221); 
+            }
+
+            .grid-i-always > input {
+                width: 100%;
+                padding: 0px;
+                border-radius:1px;
+                border:1px solid #d9d9d9;
+                border-top:1px solid #c0c0c0;
+                font-size:13px;
+                height:25px;
+                padding:1px;
+            }
+
+            .grid-i-always > input:focus {
+                box-shadow:inset 0 1px 2px rgba(0,0,0,0.3);
+                border:1px solid #4d90fe;
+                outline:none;
+            }
+
+            .example-text {
+                color:#666;
+                font-family:monospace;
+                font-size:11px;
+                white-space:pre
+            }
+
+            @media (max-width: 1074px) {
+                .grid-i-largeonly {
+                    display:none;
+                }
+
+                .main-search-container {
+                    grid-template-columns: 175px minmax(175px, 803px);
+                }
+            }
+
+            @media (min-width: 1075px) {
+                .grid-i-largeonly {
+                    font-size: 11px;
+                }
+
+                .main-search-container {
+                    grid-template-columns: 175px auto 400px;
+                }
+            }
+
+        </style>
+        <script>
+            function handleEnter(inField, e) {
+                var charCode;
+
+                //Get key code (support for all browsers)
+                if(e && e.which)
+                {
+                    charCode = e.which;
+                }
+                else if(window.event)
+                {
+                    e = window.event;
+                    charCode = e.keyCode;
+                }
+            
+                if(charCode == 13)
+                {
+                    if(inField.value=="") {
+                        e.preventDefault();
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="frm-google-copycat" action="https://www.google.com/search" method="get">
+            <div class="main-menu">
+                <div><a href="index.html"><img src="google-logo-adv-search.png" height="45px" /></a></div>
+            </div>
+            <div class="main-logo">Advanced Search</div>
+            <div class="main-search-heading">
+                <span>Find pages with...</span><br />
+            </div>
+            <div class="main-search-container">
+                <div class="grid-i-always"><label>all these words:</label></div>
+                <div class="grid-i-always"><input name="as_q" type="text" onkeypress="handleEnter(this, event)" /></div>
+                <div class="grid-i-largeonly">Type the important words: <span class="example-text">tricolor rat terrier</span></div>
+                <div class="grid-i-always"><label>this exact word or phrase:</label></div>
+                <div class="grid-i-always"><input name="as_epq" type="text" onkeypress="handleEnter(this, event)" /></div>
+                <div class="grid-i-largeonly">Put the exact words in quotes: <span class="example-text">&quot;rat terrier&quot;</span></div>
+                <div class="grid-i-always"><label>any of these words:</label></div>
+                <div class="grid-i-always"><input name="as_oq" type="text" onkeypress="handleEnter(this, event)" /></div>
+                <div class="grid-i-largeonly">Type OR between all the words you want: <span class="example-text">&quot;miniature OR standard&quot;</span></div>
+                <div class="grid-i-always"><label>none of these words:</label></div>
+                <div class="grid-i-always"><input name="as_eq" type="text" onkeypress="handleEnter(this, event)" /></div>
+                <div class="grid-i-largeonly">Put a minus sign just before words you don't want: <span class="example-text">-rodent, -&quot;Jack Russell&quot;</span></div>
+                <div class="grid-i-button"><input id="btnSubmitAdvSearch" type="submit" value="Advanced Search" /></div>
+            </div>
+        </form>
+    </body>
+</html>
